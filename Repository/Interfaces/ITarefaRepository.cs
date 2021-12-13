@@ -8,6 +8,6 @@ namespace MyTaskApp_Api.Repository.Interfaces
     public interface ITarefaRepository
     {
         Task<List<Tarefa>> Sincronizacao(List<Tarefa> tarefas);
-        Task<List<Tarefa>> Restauracao(ApplicationUser  usuario, DateTime dataUltimaSincronizacao);
+        Task<List<Tarefa>> Restauracao(ApplicationUser  usuario, DateTime? dataUltimaSincronizacao);
     }
 }

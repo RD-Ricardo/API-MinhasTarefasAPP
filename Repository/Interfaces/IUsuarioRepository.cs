@@ -7,6 +7,7 @@ namespace MyTaskApp_Api.Repository.Interfaces
     {
         Task Cadastrar(ApplicationUser usuario,  string senha);
         Task<ApplicationUser> Login(string email, string senha);
+        Task<ApplicationUser> Obter(string id);
 
     }
 }

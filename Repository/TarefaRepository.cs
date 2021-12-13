@@ -17,11 +17,15 @@ namespace MyTaskApp_Api.Repository
         {
             _db = db;
         }
-        public  async Task<List<Tarefa>> Restauracao(ApplicationUser usuario, DateTime dataUltimaSincronizacao)
+        public  async Task<List<Tarefa>> Restauracao(ApplicationUser usuario, DateTime? dataUltimaSincronizacao)
         {
-            var query =  _db.Tarefas.Where(c => c.UsuarioId == usuario.Id).AsQueryable(); 
-            query.Where(c => c.Criado >= dataUltimaSincronizacao || c.Atualizado >= dataUltimaSincronizacao);
-            return await query.ToListAsync();
+           if(dataUltimaSincronizacao == null )
+           {    
+              var result = await _db.Tarefas.ToListAsync();
+              return result;
+           }
+
+          return await _db.Tarefas.Where(c => c.UsuarioId == usuario.Id).ToListAsync();
         }
 
         public async Task<List<Tarefa>> Sincronizacao(List<Tarefa> tarefas)

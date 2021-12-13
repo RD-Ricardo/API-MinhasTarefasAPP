@@ -12,11 +12,11 @@ namespace MyTaskApp_Api.Controllers
 
     [Route("[controller]")]
     [ApiController]
-    public class TarefaContrller :Controller
+    public class TarefaController :Controller
     {
         private readonly ITarefaRepository _repository;
         private readonly UserManager<ApplicationUser> _usermanager;
-        public TarefaContrller(ITarefaRepository repository,
+        public TarefaController(ITarefaRepository repository,
         UserManager<ApplicationUser> usermanager)
         {
             _repository = repository;
@@ -25,7 +25,7 @@ namespace MyTaskApp_Api.Controllers
         
         [HttpGet]
         [Authorize]
-        public async Task<IActionResult> Restautar([FromQuery] DateTime datetime)
+        public async Task<IActionResult> Restaurar([FromQuery] DateTime datetime)
         {
             var usuario =  await _usermanager.GetUserAsync(HttpContext.User);
 

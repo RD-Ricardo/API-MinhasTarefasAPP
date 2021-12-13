@@ -46,6 +46,10 @@ namespace MyTaskApp_Api.Repository
 
         }
 
-        
+        public async Task<ApplicationUser> Obter(string id)
+        {
+          var usuario = await   _userManager.FindByIdAsync(id);
+          return usuario;
+        }
     }
 }

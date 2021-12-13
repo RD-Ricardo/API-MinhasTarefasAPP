@@ -10,5 +10,8 @@ namespace MyTaskApp_Api.Models
         
         [ForeignKey("UsuarioId")]
         public ICollection<Tarefa> Tarefas { get; set; }
+
+        [ForeignKey("UsuarioId")]
+        public ICollection<Token> Tokens { get; set; }
     }
 }
